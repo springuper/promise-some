@@ -1,0 +1,30 @@
+{
+  "name": "promise-some2",
+  "version": "0.1.0",
+  "description": "enhance promise with functionality like array some method",
+  "main": "lib/some.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/springuper/promise-some.git"
+  },
+  "keywords": [
+    "promise",
+    "some"
+  ],
+  "author": "springuper@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/springuper/promise-some/issues"
+  },
+  "homepage": "https://github.com/springuper/promise-some#readme",
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.3"
+  },
+  "dependencies": {
+    "es6-promise": "^3.0.2"
+  }
+}
