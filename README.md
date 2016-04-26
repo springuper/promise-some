@@ -46,3 +46,7 @@ promiseSome([5, 4, 3, 2, 1], function (item) {
     console.log(value); // => 2
 });
 ```
+
+## License
+
+MIT
