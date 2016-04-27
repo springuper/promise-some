@@ -1,6 +1,6 @@
 {
   "name": "promise-some2",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "enhance promise with functionality like array some method",
   "main": "lib/some.js",
   "scripts": {
