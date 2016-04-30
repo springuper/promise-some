@@ -1,6 +1,6 @@
 {
   "name": "promise-some2",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "enhance promise with functionality like array some method",
   "main": "lib/some.js",
   "scripts": {
@@ -32,6 +32,5 @@
     "eslint-plugin-react": "^5.0.1",
     "mocha": "^2.4.5"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
