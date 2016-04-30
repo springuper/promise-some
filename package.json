@@ -4,7 +4,8 @@
   "description": "enhance promise with functionality like array some method",
   "main": "lib/some.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha test/*"
+    "test": "mocha test/ --use_strict",
+    "lint": "eslint lib/ test/"
   },
   "repository": {
     "type": "git",
@@ -20,11 +21,17 @@
     "url": "https://github.com/springuper/promise-some/issues"
   },
   "homepage": "https://github.com/springuper/promise-some#readme",
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "devDependencies": {
-    "jshint": "^2.8.0",
-    "mocha": "^2.3.3"
+    "eslint": "^2.9.0",
+    "eslint-config-airbnb": "^8.0.0",
+    "eslint-plugin-import": "^1.6.1",
+    "eslint-plugin-jsx-a11y": "^1.0.4",
+    "eslint-plugin-react": "^5.0.1",
+    "mocha": "^2.4.5"
   },
   "dependencies": {
-    "es6-promise": "^3.0.2"
   }
 }

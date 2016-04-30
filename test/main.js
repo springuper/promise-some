@@ -1,64 +1,57 @@
-var assert = require('assert');
-var Promise = require('es6-promise').Promise;
-var promiseSome = require('..');
+const assert = require('assert');
+const promiseSome = require('..');
 
-describe('PromiseSome', function () {
-  it('should resolve when the first valid item found', function (done) {
-    var counter = 0;
-    var promiseFactories = [5, 1, 2, 3, 4].map(function (item) {
-      return function () {
-        return new Promise(function (resolve) {
-          counter++;
-          setTimeout(function () {
-            resolve(item % 3 === 0);
-          }, 100);
-        });
-      };
-    });
-    promiseSome(promiseFactories).then(function (index) {
+describe('PromiseSome', () => {
+  it('should resolve when the first valid item found', done => {
+    let counter = 0;
+    const promiseFactories = [5, 1, 2, 3, 4].map(item => () => (
+      new Promise(resolve => {
+        counter++;
+        setTimeout(() => {
+          resolve(item % 3 === 0);
+        }, 100);
+      })
+    ));
+    promiseSome(promiseFactories).then(index => {
       assert.equal(index, 3);
       assert.equal(counter, 4);
       done();
     }).catch(done);
   });
 
-  it('should reject when no valid item found', function (done) {
-    var counter = 0;
-    var promiseFactories = [5, 1, 2, 3, 4].map(function (item) {
-      return function () {
-        return new Promise(function (resolve) {
-          counter++;
-          setTimeout(function () {
-            resolve(item > 9);
-          }, 100);
-        });
-      };
-    });
-    promiseSome(promiseFactories).then(function (index) {
+  it('should reject when no valid item found', done => {
+    let counter = 0;
+    const promiseFactories = [5, 1, 2, 3, 4].map(item => () => (
+      new Promise(resolve => {
+        counter++;
+        setTimeout(() => {
+          resolve(item > 9);
+        }, 100);
+      })
+    ));
+    promiseSome(promiseFactories).then(index => {
       done(index);
-    }).catch(function (reason) {
+    }).catch(reason => {
       assert.equal(reason.message, 'no valid item.');
       assert.equal(counter, 5);
       done();
     }).catch(done);
   });
 
-  it('should automatically convert arguments', function (done) {
-    var list = [5, 1, 2, 3, 4];
-    promiseSome(list, function (item) {
-      return new Promise(function (resolve) {
-        setTimeout(function () {
-          resolve(item % 3 === 0);
-        }, 100);
-      });
-    }).then(function (index) {
+  it('should automatically convert arguments', done => {
+    const list = [5, 1, 2, 3, 4];
+    promiseSome(list, item => new Promise(resolve => {
+      setTimeout(() => {
+        resolve(item % 3 === 0);
+      }, 100);
+    })).then(index => {
       assert.equal(index, 3);
       done();
     }).catch(done);
   });
 
-  it('should reject empty list', function (done) {
-    promiseSome([]).catch(function (reason) {
+  it('should reject empty list', done => {
+    promiseSome([]).catch(reason => {
       assert.equal(reason.message, 'promise list is empty.');
       done();
     }).catch(done);
