@@ -10,5 +10,6 @@ module.exports = {
     "prefer-rest-params": 0,
     "no-param-reassign": 0,
     "func-names": 0,
+    "strict": false,
   },
 };
